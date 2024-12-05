@@ -1,4 +1,4 @@
-@base_url = http://localhost:3000
+@base_url = http://localhost:5000
 
 GET {{base_url}}
 Accept: application/json
@@ -7,6 +7,15 @@ Accept: application/json
 
 ###
 GET {{base_url}}/pets
+
+###
+POST {{base_url}}/pets
+Content-Type: application/json
+
+{
+  "id": "2",
+  "name": "Pippa"
+}
 
 <> 2024-12-05T121248.200.json
 <> 2024-12-05T110555.200.json
