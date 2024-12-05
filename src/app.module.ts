@@ -5,6 +5,8 @@ import { PetModule } from './features/pet/pet.module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import * as process from 'node:process';
+import { AutomapperModule } from '@automapper/nestjs';
+import { classes } from '@automapper/classes';
 
 @Module({
   imports: [
@@ -12,6 +14,9 @@ import * as process from 'node:process';
       envFilePath: 'env/.env',
     }),
     MongooseModule.forRoot(process.env.MONGO_URI),
+    AutomapperModule.forRoot({
+      strategyInitializer: classes(),
+    }),
     PetModule,
   ],
   controllers: [AppController],
