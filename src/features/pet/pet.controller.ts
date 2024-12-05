@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { PetService } from './pet.service';
 import { PetDto } from './dto/pet.dto';
 import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
@@ -11,6 +11,12 @@ export class PetController {
   @ApiOperation({ summary: 'Get all pets' })
   async getPets(): Promise<PetDto[]> {
     return await this.petService.getPets();
+  }
+
+  @Get(':id')
+  @ApiOperation({ summary: 'Get pet by id' })
+  async getPetsById(@Param('id') id: string): Promise<PetDto> {
+    return this.petService.getPetById(id);
   }
 
   @Post()
