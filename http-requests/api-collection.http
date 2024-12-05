@@ -1,0 +1,16 @@
+@base_url = http://localhost:3000
+
+GET {{base_url}}
+Accept: application/json
+
+<> 2024-12-05T121258.200.json
+
+###
+GET {{base_url}}/pets
+
+<> 2024-12-05T121248.200.json
+<> 2024-12-05T110555.200.json
+<> 2024-12-05T110414.200.json
+<> 2024-12-05T100511.200.html
+
+###
