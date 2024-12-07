@@ -11,6 +11,7 @@ import { classes } from '@automapper/classes';
 @Module({
   imports: [
     ConfigModule.forRoot({
+      isGlobal: true,
       envFilePath: 'env/.env',
     }),
     MongooseModule.forRoot(process.env.MONGO_URI),

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { Pet, PetDocument } from './entities/pet.entity';
+import { Pet, PetDocument } from '../entities/pet.entity';
 import { Model } from 'mongoose';
-import { PetDto } from './dto/pet.dto';
+import { PetDto } from '../dto/pet.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { InjectMapper } from '@automapper/nestjs';
 import { Mapper } from '@automapper/core';

@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { PetService } from './pet.service';
-import { PetDto } from './dto/pet.dto';
+import { PetService } from '../services/pet.service';
+import { PetDto } from '../dto/pet.dto';
 import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 @Controller('pets')
