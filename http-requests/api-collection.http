@@ -1,4 +1,4 @@
-@base_url = http://localhost:5000
+@base_url = http://localhost:5001
 
 GET {{base_url}}
 Accept: application/json
@@ -13,8 +13,20 @@ POST {{base_url}}/pets
 Content-Type: application/json
 
 {
-  "id": "2",
-  "name": "Pippa"
+  "id": "string",
+  "name": "string",
+  "description": "string",
+  "breed": {
+    "name": "string",
+    "description": "string"
+  },
+  "color": {
+    "general": "string",
+    "body": "string",
+    "face": "string",
+    "tail": "string",
+    "legs": "string"
+  }
 }
 
 <> 2024-12-05T121248.200.json

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Pet, PetDocument } from '../entities/pet.entity';
 import { Model } from 'mongoose';
 import { PetDto } from '../dto/pet.dto';
@@ -22,6 +22,30 @@ export class PetService {
     const pet = this.mapper.map(petDto, PetDto, Pet);
     const createdPet = await this.petModel.create(pet);
     petDto.id = createdPet.id;
+    return petDto;
+  }
+
+  async findById(id: string): Promise<PetDto> {
+    const pet = await this.findPetById(id);
+    return this.mapper.map(pet, Pet, PetDto);
+  }
+
+  private async findPetById(id: string): Promise<Pet> {
+    const pet: Pet = await this.petModel.findById(id);
+    if (!pet) {
+      throw new NotFoundException(`pet with id ${id} not found`);
+    }
+    return pet;
+  }
+
+  async update(id: string, petDto: PetDto): Promise<PetDto> {
+    const pet: Pet = await this.findPetById(id);
+    pet.name = petDto.name;
+    pet.description = petDto.description;
+    pet.breed = petDto.breed;
+    pet.color = petDto.color;
+    const petDocument = new this.petModel(pet);
+    await petDocument.save();
     return petDto;
   }
 }
